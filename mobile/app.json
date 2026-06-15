@@ -1,0 +1,26 @@
+{
+  "expo": {
+    "name": "Notas Seguras",
+    "slug": "notas-seguras",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "userInterfaceStyle": "dark",
+    "splash": {
+      "backgroundColor": "#0f172a"
+    },
+    "ios": {
+      "supportsTablet": true,
+      "bundleIdentifier": "com.example.notasseguras",
+      "infoPlist": {
+        "NSAppTransportSecurity": {
+          "NSAllowsArbitraryLoads": false
+        }
+      }
+    },
+    "android": {
+      "package": "com.example.notasseguras",
+      "usesCleartextTraffic": false
+    },
+    "plugins": ["expo-secure-store"]
+  }
+}
