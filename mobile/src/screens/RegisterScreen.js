@@ -10,6 +10,8 @@ export default function RegisterScreen({ navigation }) {
   const [confirm, setConfirm] = useState('');
   const [error, setError] = useState('');
   const [loading, setLoading] = useState(false);
+  const [showPassword, setShowPassword] = useState(false);
+  const [showConfirm, setShowConfirm] = useState(false);
 
   const onSubmit = async () => {
     setError('');
@@ -51,24 +53,40 @@ export default function RegisterScreen({ navigation }) {
         />
 
         <Text style={styles.label}>Contraseña</Text>
-        <TextInput
-          style={styles.input}
-          secureTextEntry
-          placeholder="Mínimo 8 caracteres"
-          placeholderTextColor={colors.textMuted}
-          value={password}
-          onChangeText={setPassword}
-        />
+        <View style={{ position: 'relative' }}>
+          <TextInput
+            style={[styles.input, { paddingRight: 70 }]}
+            secureTextEntry={!showPassword}
+            placeholder="Mínimo 8 caracteres"
+            placeholderTextColor={colors.textMuted}
+            value={password}
+            onChangeText={setPassword}
+          />
+          <TouchableOpacity
+            style={{ position: 'absolute', right: 14, top: 0, bottom: 0, justifyContent: 'center' }}
+            onPress={() => setShowPassword(v => !v)}
+          >
+            <Text style={{ color: colors.textMuted, fontSize: 13 }}>{showPassword ? 'Ocultar' : 'Mostrar'}</Text>
+          </TouchableOpacity>
+        </View>
 
         <Text style={styles.label}>Confirmar contraseña</Text>
-        <TextInput
-          style={styles.input}
-          secureTextEntry
-          placeholder="Repite la contraseña"
-          placeholderTextColor={colors.textMuted}
-          value={confirm}
-          onChangeText={setConfirm}
-        />
+        <View style={{ position: 'relative' }}>
+          <TextInput
+            style={[styles.input, { paddingRight: 70 }]}
+            secureTextEntry={!showConfirm}
+            placeholder="Repite la contraseña"
+            placeholderTextColor={colors.textMuted}
+            value={confirm}
+            onChangeText={setConfirm}
+          />
+          <TouchableOpacity
+            style={{ position: 'absolute', right: 14, top: 0, bottom: 0, justifyContent: 'center' }}
+            onPress={() => setShowConfirm(v => !v)}
+          >
+            <Text style={{ color: colors.textMuted, fontSize: 13 }}>{showConfirm ? 'Ocultar' : 'Mostrar'}</Text>
+          </TouchableOpacity>
+        </View>
 
         {error ? <Text style={styles.errorText}>{error}</Text> : null}
 
